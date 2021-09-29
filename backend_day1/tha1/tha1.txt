@@ -1,0 +1,138 @@
+Microsoft Windows [Version 10.0.19043.1165]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\singh>radis-cli
+'radis-cli' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\singh>redis-cli
+127.0.0.1:6379> set name  swechchha
+OK
+127.0.0.1:6379> get name
+"swechchha"
+127.0.0.1:6379> getall
+(error) ERR unknown command 'getall'
+127.0.0.1:6379> set age 21
+OK
+127.0.0.1:6379> del age
+(integer) 1
+127.0.0.1:6379> exists name
+(integer) 1
+127.0.0.1:6379> exista age
+(error) ERR unknown command 'exista'
+127.0.0.1:6379> exists age
+(integer) 0
+127.0.0.1:6379> keys *
+1) "person"
+2) "name"
+127.0.0.1:6379> flushall
+OK
+127.0.0.1:6379> keys *
+(empty list or set)
+127.0.0.1:6379> set name swechchha
+OK
+127.0.0.1:6379> ttl name
+(integer) -1
+127.0.0.1:6379> expire name 10
+(integer) 1
+127.0.0.1:6379> ttl name
+(integer) 6
+127.0.0.1:6379> ttl name
+(integer) 2
+127.0.0.1:6379> ttl name
+(integer) -2
+127.0.0.1:6379> setex name 10 swechchha
+OK
+127.0.0.1:6379> ttl name
+(integer) 7
+127.0.0.1:6379> ttl name
+(integer) 3
+127.0.0.1:6379> ttl name
+(integer) -2
+127.0.0.1:6379> lpush friends reena
+(integer) 1
+127.0.0.1:6379> get friends
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> lrange friends 0 -1
+1) "reena"
+127.0.0.1:6379> rpush friends meena
+(integer) 2
+127.0.0.1:6379> lrange friends 0 -1
+1) "reena"
+2) "meena"
+127.0.0.1:6379> lpush friends 0 -1
+(integer) 4
+127.0.0.1:6379> lrange friends 0 -1
+1) "-1"
+2) "0"
+3) "reena"
+4) "meena"
+127.0.0.1:6379> keys *
+1) "friends"
+127.0.0.1:6379> lpop friends
+"-1"
+127.0.0.1:6379> rpop friends
+"meena"
+127.0.0.1:6379> lrange friends 0 -1
+1) "0"
+2) "reena"
+127.0.0.1:6379> sadd hobbies "reading books"
+(integer) 1
+127.0.0.1:6379> sadd hobbies badminton
+(integer) 1
+127.0.0.1:6379> sadd hobbies b
+(integer) 1
+127.0.0.1:6379> sadd hobbies b
+(integer) 0
+127.0.0.1:6379> hset person name vidhi
+(integer) 1
+127.0.0.1:6379> hget person name
+"vidhi"
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "vidhi"
+127.0.0.1:6379> hset person age 21
+(integer) 1
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "vidhi"
+3) "age"
+4) "21"
+127.0.0.1:6379> hdel person age
+(integer) 1
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "vidhi"
+127.0.0.1:6379> hexists person name
+(integer) 1
+127.0.0.1:6379> hexists age 21
+(integer) 0
+127.0.0.1:6379>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

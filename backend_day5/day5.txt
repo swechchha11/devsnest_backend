@@ -1,0 +1,46 @@
+C:\Users\singh>d:
+
+D:\>cd backend
+
+D:\backend>cd day5
+
+D:\backend\day5>node
+Welcome to Node.js v14.17.6.
+Type ".help" for more information.
+> 1+1
+2
+> '1'+'1'
+'11'
+> var fs=require("fs");
+undefined
+> fs.mkdirSync('day_1');
+undefined
+> var fs = require("fs");
+undefined
+> fs.writeFileSync("day_1/hello.txt","hello world",(err) =>
+... {
+..... if(err){
+....... console.log(err);
+....... }
+..... });
+undefined
+> fs.appendFileSync("day_1/hello.txt","!!!!!!");
+undefined
+> fs.readFileSync("day_1/hello.txt");
+<Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64 21 21 21 21 21 21>
+> fs.readFileSync("day_1/hello.txt","utf-8");
+'hello world!!!!!!'
+> var data=fs.readFileSync("day_1/hello.txt","utf-8");
+undefined
+> console.log(data);
+hello world!!!!!!
+undefined
+> fs,renameSync("day_1/hello.txt","day_1/hello2.txt");
+Uncaught ReferenceError: renameSync is not defined
+> fs.renameSync("day_1/hello.txt","day_1/hello2.txt");
+undefined
+> fs.unlinkSync("day_1/hello2.txt");
+undefined
+> fs.rmdirSync('day_1');
+undefined
+>

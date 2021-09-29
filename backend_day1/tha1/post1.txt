@@ -1,0 +1,88 @@
+Microsoft Windows [Version 10.0.19043.1165]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\singh>psql -U postgres -h localhost
+Password for user postgres:
+psql (13.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# CREATE DATABASE devs;
+CREATE DATABASE
+postgres=# \l
+                                         List of databases
+   Name    |  Owner   | Encoding |      Collate       |       Ctype        |   Access privileges
+-----------+----------+----------+--------------------+--------------------+-----------------------
+ devs      | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ postgres  | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ template0 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+ template1 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+(4 rows)
+
+
+postgres=# \c devs
+You are now connected to database "devs" as user "postgres".
+devs=# CREATE TABLE COMPANY(
+devs(# ID INT NOT NULL,
+devs(# NAME CHAR[50],
+devs(# AGE INT,
+devs(# ADDRESS TEXT
+devs(# );
+CREATE TABLE
+devs=# \D
+invalid command \D
+Try \? for help.
+devs=# \d
+          List of relations
+ Schema |  Name   | Type  |  Owner
+--------+---------+-------+----------
+ public | company | table | postgres
+(1 row)
+
+
+devs=# \d COMPANY
+                  Table "public.company"
+ Column  |      Type      | Collation | Nullable | Default
+---------+----------------+-----------+----------+---------
+ id      | integer        |           | not null |
+ name    | character(1)[] |           |          |
+ age     | integer        |           |          |
+ address | text           |           |          |
+
+
+devs=# DROP TABLE COMPANY
+devs-# DROP TABLE COMPANY;
+ERROR:  syntax error at or near "DROP"
+LINE 2: DROP TABLE COMPANY;
+        ^
+devs=# \q
+
+C:\Users\singh>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

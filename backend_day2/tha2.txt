@@ -1,0 +1,451 @@
+
+
+
+
+
+
+
+                    ^
+devs=# CREATE TABLE COMPANY(
+devs(# ID INT NOT NULL,
+devs(# NAME TEXT,
+devs(# AGE INT,
+devs(# ADDRESS CHAR(100),
+devs(# SALARY REAL,
+devs(# JOIN_DATE DATE
+devs(# );
+CREATE TABLE
+devs=#   INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (1,'Sita',40,'delhi',6000000,'2014-12-7');
+INSERT 0 1
+devs=#  INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (2,'Rita',35,'MUMBAI',7000000,'2016-12-7');
+INSERT 0 1
+devs=# SELECT * FROM COMPANY;
+ id | name | age |                                               address                                                | salary | join_date
+----+------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  1 | Sita |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  2 | Rita |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+(2 rows)
+
+
+devs=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (3,'VINITA',25,'LUCKNOW',8000000,'2005-2-5');
+INSERT 0 1
+devs=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (4,'REENA',21,'BANGLORE',3000000,'2006-2-15');
+INSERT 0 1
+devs=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (5,'DURGA',23,'PUNE',4000000,'20015-2-25');
+INSERT 0 1
+devs=# SELECT * FROM COMPANY
+devs-# SELECT * FROM COMPANY;
+ERROR:  syntax error at or near "SELECT"
+LINE 2: SELECT * FROM COMPANY;
+        ^
+devs=#  seLECT * FROM COMPANY;
+ id |  name  | age |                                               address                                                | salary |  join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+-------------
+  1 | Sita   |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  2 | Rita   |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+  4 | REENA  |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+  5 | DURGA  |  23 | PUNE                                                                                                 |  4e+06 | 20015-02-25
+(5 rows)
+
+
+devs=# select  (15+2) as addition;
+ addition
+----------
+       17
+(1 row)
+
+
+devs=#  select 15*3) as addition;
+ERROR:  syntax error at or near ")"
+LINE 1: select 15*3) as addition;
+                   ^
+devs=#  select (15*3) as addition;
+ addition
+----------
+       45
+(1 row)
+
+
+devs=# select count(*) as records from company;
+ records
+---------
+       5
+(1 row)
+
+
+devs=# select current_timestamp;
+        current_timestamp
+---------------------------------
+ 2021-09-03 00:20:03.89679+05:30
+(1 row)
+
+
+devs=#  select * from company where age >= 25 and salary >=200000;
+ id |  name  | age |                                               address                                                | salary | join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  1 | Sita   |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  2 | Rita   |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+(3 rows)
+
+
+devs=#  select * from company where age is not null;
+ id |  name  | age |                                               address                                                | salary |  join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+-------------
+  1 | Sita   |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  2 | Rita   |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+  4 | REENA  |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+  5 | DURGA  |  23 | PUNE                                                                                                 |  4e+06 | 20015-02-25
+(5 rows)
+
+
+devs=# select * from company  where name like 'r%';
+ id | name | age | address | salary | join_date
+----+------+-----+---------+--------+-----------
+(0 rows)
+
+
+devs=#  select * from company where name like 'R%';
+ id | name  | age |                                               address                                                | salary | join_date
+----+-------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  2 | Rita  |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+  4 | REENA |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+(2 rows)
+
+
+devs=# select * from company where name like 'du_ga';
+ id | name | age | address | salary | join_date
+----+------+-----+---------+--------+-----------
+(0 rows)
+
+
+devs=#  select * from company where name like 'DU_GA';
+ id | name  | age |                                               address                                                | salary |  join_date
+----+-------+-----+------------------------------------------------------------------------------------------------------+--------+-------------
+  5 | DURGA |  23 | PUNE                                                                                                 |  4e+06 | 20015-02-25
+(1 row)
+
+
+devs=#  select * from company where name like '_i%';
+ id | name | age |                                               address                                                | salary | join_date
+----+------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  1 | Sita |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  2 | Rita |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+(2 rows)
+
+
+devs=# select * from company where salary :: text like  '400%';
+ id | name | age | address | salary | join_date
+----+------+-----+---------+--------+-----------
+(0 rows)
+
+
+devs=#  select * from company where salary::text like '400%';
+ id | name | age | address | salary | join_date
+----+------+-----+---------+--------+-----------
+(0 rows)
+
+
+devs=#   select * from company where salary::text like '6%';
+ id | name | age |                                               address                                                | salary | join_date
+----+------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  1 | Sita |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+(1 row)
+
+
+devs=#  select * from company where age between 21 and 30;
+ id |  name  | age |                                               address                                                | salary |  join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+-------------
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+  4 | REENA  |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+  5 | DURGA  |  23 | PUNE                                                                                                 |  4e+06 | 20015-02-25
+(3 rows)
+
+
+devs=# select * from company where age in (25,35);
+ id |  name  | age |                                               address                                                | salary | join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  2 | Rita   |  35 | MUMBAI                                                                                               |  7e+06 | 2016-12-07
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+(2 rows)
+
+
+devs=#  select * from company where age not in (25,35);
+ id | name  | age |                                               address                                                | salary |  join_date
+----+-------+-----+------------------------------------------------------------------------------------------------------+--------+-------------
+  1 | Sita  |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  4 | REENA |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+  5 | DURGA |  23 | PUNE                                                                                                 |  4e+06 | 20015-02-25
+(3 rows)
+
+
+devs=# update company set salary=1000000 where id=5;
+UPDATE 1
+devs=# update company set address="india" , salary=9000000 where id=1;
+ERROR:  column "india" does not exist
+LINE 1: update company set address="india" , salary=9000000 where id...
+                                   ^
+devs=#  update company set address="hyderabad" , salary=9000000 where id=2;
+ERROR:  column "hyderabad" does not exist
+LINE 1: update company set address="hyderabad" , salary=9000000 wher...
+                                   ^
+devs=#  update company set address='hyderabad' , salary=9000000 where id=2;
+UPDATE 1
+devs=# select * from company;
+ id |  name  | age |                                               address                                                | salary |  join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+-------------
+  1 | Sita   |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+  4 | REENA  |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+  5 | DURGA  |  23 | PUNE                                                                                                 |  1e+06 | 20015-02-25
+  2 | Rita   |  35 | hyderabad                                                                                            |  9e+06 | 2016-12-07
+(5 rows)
+
+
+devs=# delete from company where id=5;
+DELETE 1
+devs=# select * from company;
+ id |  name  | age |                                               address                                                | salary | join_date
+----+--------+-----+------------------------------------------------------------------------------------------------------+--------+------------
+  1 | Sita   |  40 | delhi                                                                                                |  6e+06 | 2014-12-07
+  3 | VINITA |  25 | LUCKNOW                                                                                              |  8e+06 | 2005-02-05
+  4 | REENA  |  21 | BANGLORE                                                                                             |  3e+06 | 2006-02-15
+  2 | Rita   |  35 | hyderabad                                                                                            |  9e+06 | 2016-12-07
+(4 rows)
+
+
+devs=# \d
+          List of relations
+ Schema |  Name   | Type  |  Owner
+--------+---------+-------+----------
+ public | company | table | postgres
+(1 row)
+
+
+devs=# create table customers(
+devs(# customer_id int generated always as identity,
+devs(# customer_name varchar(255) not null,
+devs(#
+devs(# )
+devs-# );;
+ERROR:  syntax error at or near ")"
+LINE 4: )
+        ^
+devs=# create table customers(
+devs(# customer_id int generated always as identity,
+devs(# customer_name varchar(255) not null;
+devs(# primary key(customer_id)
+devs(# );
+ERROR:  syntax error at or near ";"
+LINE 3: customer_name varchar(255) not null;
+                                           ^
+devs=# create table customer(
+devs(# customer_id int generated always as identity,
+devs(# customer_name varchar(255) not null,
+devs(# primary key(customer_id)
+devs(# );
+CREATE TABLE
+devs=# create table contacts(
+devs(# contact_id int not null,
+devs(# customer_id int,
+devs(# coantact_name varchar(255) not null,
+devs(# phone varchar(15),
+devs(# email varchar(100),
+devs(# primary key(contact_id)
+devs(# constraint foreign_key_customer
+devs(# );;
+ERROR:  syntax error at or near "constraint"
+LINE 8: constraint foreign_key_customer
+        ^
+devs=#  create table contacts(
+devs(#  contact_id int not null,
+devs(#  customer_id int,
+devs(#  contact_name varchar(255) not null,
+devs(#  phone varchar(15),
+devs(#  email varchar(100),
+devs(#  primary key(contact_id),
+devs(# constraint fk_customer
+devs(# foreign key(customer_id)
+devs(# references customers(customer_id)
+devs(# on delete cascade
+devs(# );
+ERROR:  relation "customers" does not exist
+devs=# create table contacts(
+devs(# contact_id int not null,
+devs(#  customer_id int,
+devs(# contact_name varchar(255) not null,
+devs(# phone varchar(15),
+devs(# email varchar(100),
+devs(# primary key(contact_id),
+devs(# constraint fk_customer
+devs(# foreign key(customer_id)
+devs(# references customer(customer_id)
+devs(# on delete cascade
+devs(# );
+CREATE TABLE
+devs=#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
